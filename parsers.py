@@ -612,17 +612,17 @@ class MESHParser(Parser):
 		with open(self._url, 'r') as fp:
 			for line in fp.readlines():
 				if line.startswith('MH ='):
-					mh = line.split('=')[1].strip()
+					mh = line.lstrip('MH =').strip()
 				elif line.startswith('UI ='):
-					ui = line.split('=')[1].strip()
+					ui = line.lstrip('UI =').strip()
 				elif line.startswith('MN ='):
-					mn = line.split('=')[1].strip()
+					mn = line.lstrip('MN =').strip()
 					mns.add(mn)
 				elif line.startswith('ST ='):
-					st = line.split('=')[1].strip()
+					st = line.lstrip('ST =').strip()
 					sts.add(st)
 				elif line.startswith('PRINT ENTRY ='):
-					entry = line.split('=')[1].strip()
+					entry = line.lstrip('PRINT ENTRY =').strip()
 					if '|EQV|' in line:
 						entries = entry.split('|')
 						last = entries[-1]
@@ -635,7 +635,7 @@ class MESHParser(Parser):
 						if '|' not in entry:
 							synonyms.add(entry)
 				elif line.startswith('ENTRY ='):
-					entry = line.split('=')[1].strip()
+					entry = line.lstrip('ENTRY =').strip()
 					if '|EQV|' in line:
 						entries = entry.split('|')
 						last = entries[-1]
